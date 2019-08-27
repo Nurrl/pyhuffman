@@ -13,7 +13,6 @@ class Huffman:
     for c in string:
       compressed += treedict[c]
 
-    print (compressed)
     return (tree.as_bytes(), BitArray.to_bytes(compressed))
 
   @staticmethod

@@ -8,16 +8,15 @@ class BitArray:
     bytelist = ''
 
     byte = 0
-    count = 0
     for i in range(len(bitlist)):
-      bit = bitlist[i]
-      count += 1
-      byte <<= 1
-      byte += bit
-      if count > 7 or i == len(bitlist) - 1:
+      if (i and i % 8 == 0):
         bytelist += chr(byte)
         byte = 0
-        count = 0
+      bit = bitlist[i]
+      byte |= bit << 7 - (i % 8)
+
+    if ((len(bitlist) % 7) != 0):
+      bytelist += chr(byte)
 
     return bytelist
 
