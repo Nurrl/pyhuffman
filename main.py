@@ -17,12 +17,14 @@ class Huffman:
 
   @staticmethod
   def uncompress(tree, compressed):
-    tree = BitArray.from_bytes(tree)
     compressed = BitArray.from_bytes(compressed)
+    treeobj = Tree(None, tree)
 
-    print (compressed)
+if __name__ == "__main__":
+  # Compress string and get the tree and the compressed binary
+  (tree, compressed) = Huffman.compress('Hello')
 
-string = 'mmtbnl'
-(tree, compressed) = Huffman.compress(string)
-uncompressed = Huffman.uncompress(tree, compressed)
-print(uncompressed)
+  # Feed the tree and the string to the uncompress algorithm
+  uncompressed = Huffman.uncompress(tree, compressed)
+
+  print(uncompressed)

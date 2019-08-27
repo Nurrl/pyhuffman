@@ -15,8 +15,7 @@ class BitArray:
       bit = bitlist[i]
       byte |= bit << 7 - (i % 8)
 
-    if ((len(bitlist) % 7) != 0):
-      bytelist += chr(byte)
+    bytelist += chr(byte)
 
     return bytelist
 
