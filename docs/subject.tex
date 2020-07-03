@@ -1,0 +1,88 @@
+\documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[utf8]{inputenc}
+ 
+\title{Le codage de Huffman}
+\author{Jake Penney, clarifié et remasterisé par Léon Roux}
+\date{Septembre 2019}
+ 
+\begin{document} 
+\begin{titlepage}
+
+\maketitle
+
+\end{titlepage}
+
+\renewcommand*\contentsname{Sommaire}
+\tableofcontents
+
+\newpage
+ 
+\part{Préambule}
+ 
+Le javanais ou langue de feu, apparu en France dans la dernière moitié du XIXe siècle, est un procédé de codage argotique utilisant une phonologie parasitaire constituée par l'insertion d'une syllabe supplémentaire entre voyelles et consonnes, dans le but de rendre ce texte moins compréhensible aux non initiés. Cette syllabe comporte un son lié au nom de la variante : " ja " ou " av " dans la variante " javanaise " et une syllabe comportant " f " dans la variante " langue de feu ".
+
+La difficulté réside tout autant dans l'habileté à placer les syllabes supplémentaires de façon naturelle dans la conversation, qu'à la compréhension orale. 
+
+\paragraph{Quelques exemples:}
+
+\begin{itemize}
+    \item allumettes $->$ avallavumavettes. Forme complète : avallavumavettaves.
+    \item train $->$ travain.
+    \item bonjour $->$ bavonjavour.
+    \item bicrave $->$ bavicravave. Forme complète : bavicravavave.
+    \item immeuble $->$ avimmaveuble. Forme complète : avimmaveublave.
+    \item champion $->$ chavampavion.
+    \item plans $->$ plavans.
+    \item supermarché $->$ savupavermavarchavé.
+    \item poirier $->$ pavoiravier.
+    \item Peugeot 406 $->$ Paveugeavot quavatre-cavent-savix.
+\end{itemize}
+
+Vous voila fixés, nous pouvons commencer..
+
+\newpage
+
+\part{Sujet}
+ 
+\section{Huffman}
+\subsection{L'algorithme}
+
+Le codage de Huffman est un algorithme de compression de texte sans perte qui a la particularité d'encoder les caractères en réduisant le nombre de bits utilisés en fonction de leur fréquence, grâce à un arbre appelé \textit{arbre de Huffman}.
+Le but étant que les caractères les plus fréquents soient codés sur le moins de bits possibles.
+
+L'encodage et le décodage se fait grâce une table de conversion générée à partir de l'arbre binaire de Huffman, qui, lui, tiens compte de la fréquence d'apparition des caractères dans le texte.
+
+Cette façon d'encoder les caractères s'oppose au codage traditionnel ASCII(et son extension, l'Unicode), qui lui, stocke tout les caractères sur 7, 8, 16, 24 ou 32bits sans se soucier de leur fréquence d'apparition.
+
+\paragraph{Exemple:}
+Le mot "\textit{Bonjour}" produit le binaire \textit{100011011100111100} grâce au tableau d'encodage suivant:\\*
+
+\begin{tabular}{ c | c }
+    Caractère & Binaire \\
+    \hline
+    'o' & 01 \\
+    'r' & 00 \\
+    'B' & 100 \\
+    'n' & 101 \\
+    'j' & 110 \\
+    'u' & 111 \\
+\end{tabular} \\* \\* \\*
+et peut être à son tour décodé comme cela:\\*
+
+\begin{tabular}{ c c c c c c c }
+    100 & 01 & 101 & 110 & 01 & 111 & 00 \\
+     B & o & n & j & o & u &r 
+\end{tabular}
+
+\subsection{L'arbre}
+
+Mais comment construit-t-on ce tableau d'encodage ? La reponse est dans le titre.
+
+\section{Attentes et limites du Sujet}
+ 
+Dans ce sujet, on vas vous demander d'implementer cet algorithme en
+\begin{itemize}
+    \item Python $\ge$ 3.0
+\end{itemize}
+
+\end{document}
